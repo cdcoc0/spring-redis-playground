@@ -1,7 +1,20 @@
 spring:
   application:
     name: redis-practice
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/redis_playground?serverTimezone=Asia/Seoul&characterEncoding=UTF-8}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   data:
     redis:
       host: localhost
       port: 6379
+  cache:
+    type: redis
