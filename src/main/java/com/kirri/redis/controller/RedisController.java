@@ -25,7 +25,7 @@ public class RedisController {
 		this.redisService = redisService;
 	}
 
-	@Operation(summary = "Redis에 문자열 저장")
+	@Operation(summary = "Redis 문자열 저장")
 	@PostMapping
 	public ResponseEntity<Map<String, String>> setValue(@RequestBody RedisSetRequest request) {
 		redisService.set(request.key(), request.value());
@@ -36,7 +36,7 @@ public class RedisController {
 		));
 	}
 
-	@Operation(summary = "Redis에서 문자열 조회")
+	@Operation(summary = "Redis 문자열 조회")
 	@GetMapping("/{key}")
 	public ResponseEntity<Map<String, String>> getValue(@PathVariable String key) {
 		String value = redisService.get(key);

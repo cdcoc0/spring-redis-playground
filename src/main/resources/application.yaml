@@ -1,6 +1,6 @@
 spring:
   application:
-    name: redis
+    name: redis-practice
   data:
     redis:
       host: localhost
