@@ -1,4 +1,4 @@
-package com.kirri.redis.config;
+package com.kirri.redis.common.config;
 
 import java.time.Duration;
 
@@ -33,9 +33,9 @@ public class RedisConfig {
 	public RedisCacheConfiguration redisCacheConfiguration() {
 		return RedisCacheConfiguration.defaultCacheConfig()
 			.entryTtl(Duration.ofMinutes(10))
-			// key 직렬화 설정
+			// Cache keys stay readable in Redis.
 			.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-			// value 직렬화 설정
+			// Cache values are stored as JSON for DTO-based caching.
 			.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
 	}
 }

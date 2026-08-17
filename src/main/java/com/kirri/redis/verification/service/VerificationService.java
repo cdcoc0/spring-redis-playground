@@ -1,8 +1,9 @@
-package com.kirri.redis.service;
+package com.kirri.redis.verification.service;
 
 import java.time.Duration;
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.kirri.redis.basic.service.RedisService;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -16,16 +17,16 @@ public class VerificationService {
 
 	private final RedisService redisService;
 
-	// 코드 생성
+	// Generates a random six-digit code and stores it with TTL.
 	public String createCode(String phone) {
 		String code = generateCode();
 
-		// 전화번호별 인증번호를 3분 동안만 유효하게 저장한다.
+		// Verification codes are valid for only three minutes.
 		redisService.setWithTtl(buildKey(phone), code, VERIFICATION_TTL);
 		return code;
 	}
 
-	// 코드 검증
+	// Compares the user input against the stored verification code.
 	public boolean verifyCode(String phone, String inputCode) {
 		String key = buildKey(phone);
 		String savedCode = redisService.get(key);
@@ -38,7 +39,7 @@ public class VerificationService {
 			return false;
 		}
 
-		// 인증번호는 1회성 값이므로 성공 시 바로 제거한다.
+		// Codes are one-time values, so remove them after success.
 		redisService.delete(key);
 		return true;
 	}

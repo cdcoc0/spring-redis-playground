@@ -1,9 +1,9 @@
-package com.kirri.redis.controller;
+package com.kirri.redis.cache.controller;
 
-import com.kirri.redis.dto.UserCreateRequest;
-import com.kirri.redis.dto.UserResponse;
-import com.kirri.redis.dto.UserUpdateRequest;
-import com.kirri.redis.service.UserService;
+import com.kirri.redis.cache.dto.UserCreateRequest;
+import com.kirri.redis.cache.dto.UserResponse;
+import com.kirri.redis.cache.dto.UserUpdateRequest;
+import com.kirri.redis.cache.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class UserController {
 
 	private final UserService userService;
 
-	@Operation(summary = "사용자 생성", description = "MySQL users 테이블에 연습용 데이터를 저장합니다.")
+	@Operation(summary = "사용자 생성", description = "MySQL users 테이블에 학습용 데이터를 저장합니다.")
 	@PostMapping
 	public ResponseEntity<UserResponse> createUser(@RequestBody UserCreateRequest request) {
 		return ResponseEntity.ok(userService.createUser(request));

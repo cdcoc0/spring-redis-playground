@@ -1,10 +1,10 @@
-package com.kirri.redis.controller;
+package com.kirri.redis.verification.controller;
 
 import java.util.Map;
 
-import com.kirri.redis.dto.VerificationConfirmRequest;
-import com.kirri.redis.dto.VerificationCreateRequest;
-import com.kirri.redis.service.VerificationService;
+import com.kirri.redis.verification.dto.VerificationConfirmRequest;
+import com.kirri.redis.verification.dto.VerificationCreateRequest;
+import com.kirri.redis.verification.service.VerificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;

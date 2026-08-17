@@ -1,9 +1,9 @@
-package com.kirri.redis.controller;
+package com.kirri.redis.basic.controller;
 
 import java.util.Map;
 
-import com.kirri.redis.dto.RedisSetRequest;
-import com.kirri.redis.service.RedisService;
+import com.kirri.redis.basic.dto.RedisSetRequest;
+import com.kirri.redis.basic.service.RedisService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "Redis", description = "RedisTemplate set/get practice API")
+@Tag(name = "Redis Basic", description = "RedisTemplate set/get practice API")
 @RestController
 @RequestMapping("/redis")
 public class RedisController {

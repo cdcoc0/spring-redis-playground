@@ -1,4 +1,4 @@
-package com.kirri.redis.domain;
+package com.kirri.redis.cache.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

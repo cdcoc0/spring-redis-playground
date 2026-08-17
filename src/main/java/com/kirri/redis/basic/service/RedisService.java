@@ -1,4 +1,4 @@
-package com.kirri.redis.service;
+package com.kirri.redis.basic.service;
 
 import java.time.Duration;
 
@@ -13,17 +13,17 @@ public class RedisService {
 
 	private final RedisTemplate<String, String> redisTemplate;
 
-	// redis에 key, value 저장
+	// Stores a basic key-value pair with no expiration.
 	public void set(String key, String value) {
 		redisTemplate.opsForValue().set(key, value);
 	}
 
-	// TTL이 필요한 값은 만료 시간과 함께 저장
+	// Stores temporary data together with its TTL.
 	public void setWithTtl(String key, String value, Duration ttl) {
 		redisTemplate.opsForValue().set(key, value, ttl);
 	}
 
-	// redis 조회
+	// Reads a string value from Redis.
 	public String get(String key) {
 		return redisTemplate.opsForValue().get(key);
 	}

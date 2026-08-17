@@ -1,10 +1,10 @@
-package com.kirri.redis.service;
+package com.kirri.redis.cache.service;
 
-import com.kirri.redis.domain.User;
-import com.kirri.redis.dto.UserCreateRequest;
-import com.kirri.redis.dto.UserResponse;
-import com.kirri.redis.dto.UserUpdateRequest;
-import com.kirri.redis.repository.UserRepository;
+import com.kirri.redis.cache.domain.User;
+import com.kirri.redis.cache.dto.UserCreateRequest;
+import com.kirri.redis.cache.dto.UserResponse;
+import com.kirri.redis.cache.dto.UserUpdateRequest;
+import com.kirri.redis.cache.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class UserService {
 	@Cacheable(cacheNames = "users", key = "#userId")
 	@Transactional(readOnly = true)
 	public UserResponse getUser(Long userId) {
-		// 이 로그가 보이면 Redis 캐시가 아니라 MySQL을 조회한 것
+		// If this log appears, the data came from MySQL rather than Redis cache.
 		log.info("Loading user {} from MySQL", userId);
 
 		User user = userRepository.findById(userId)

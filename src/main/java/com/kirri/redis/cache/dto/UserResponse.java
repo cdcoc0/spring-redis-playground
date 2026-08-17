@@ -1,8 +1,8 @@
-package com.kirri.redis.dto;
+package com.kirri.redis.cache.dto;
 
 import java.io.Serializable;
 
-import com.kirri.redis.domain.User;
+import com.kirri.redis.cache.domain.User;
 
 public record UserResponse(Long id, String name, int age) implements Serializable {
 
